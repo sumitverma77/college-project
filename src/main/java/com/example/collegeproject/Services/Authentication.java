@@ -23,4 +23,5 @@ public class Authentication {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
-    }}
+    }
+}
