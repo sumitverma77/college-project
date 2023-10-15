@@ -5,6 +5,7 @@ import com.example.collegeproject.dto.JoinForm;
 import com.example.collegeproject.dto.User;
 import com.example.collegeproject.repo.UserRepository;
 import com.example.collegeproject.repo.JoinRepo;
+import com.example.collegeproject.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,42 +16,31 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
 
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private JoinRepo joinRepo;
-
-    @PostMapping("/register")
-        public ResponseEntity<Boolean> register(@RequestBody AuthenticationRequest request) {
-        User existingUser = userRepository.findByUsername(request.getUsername());
-
-        if (existingUser != null) {
-            return ResponseEntity.ok(false); // Username already exists
-           }
-        else {
-            User newUser = new User();
-            newUser.setUsername(request.getUsername());
-            newUser.setPassword(request.getPassword());
-            userRepository.save(newUser);
-            return ResponseEntity.ok(true); // Registration successful
-        }
+    @Autowired
+    private AuthenticationService authenticationService;
+       @PostMapping("/register")
+    public ResponseEntity<Boolean> register(@RequestBody AuthenticationRequest request) {
+        boolean registrationResult = authenticationService.registerUser(request);
+        return ResponseEntity.ok(registrationResult);
     }
-
     @PostMapping("/signin")
     public ResponseEntity<Boolean> signin(@RequestBody AuthenticationRequest request) {
-        User existingUser = userRepository.findByUsername(request.getUsername());
-
-        if (existingUser != null && existingUser.getPassword().equals(request.getPassword())) {
-            return ResponseEntity.ok(true);
-        } else {
-            return ResponseEntity.ok(false);
-        }
+        boolean signinResult = authenticationService.signinUser(request);
+        return ResponseEntity.ok(signinResult);
     }
     @PostMapping("/joinnow")
-    public ResponseEntity<Boolean> joinus(@RequestBody JoinForm joinForm) {
+    public ResponseEntity<Boolean> joinus(@RequestBody JoinForm joinform) {
+        JoinForm existingUsername = joinRepo.findByUsername(joinform.getUsername());
+        if(existingUsername!=null)
+        {
+            return ResponseEntity.ok(false);
+        }
             JoinForm join = new JoinForm();
-            join.setName(joinForm.getName());
-           join.setPhone(joinForm.getPhone());
-           join.setGmail(joinForm.getGmail());
+            join.setName(joinform.getName());
+           join.setPhone(joinform.getPhone());
+           join.setGmail(joinform.getGmail());
+           join.setUsername(joinform.getUsername());
          joinRepo.save(join);
             return ResponseEntity.ok(true);
         }
