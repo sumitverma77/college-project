@@ -11,6 +11,7 @@ public class JoinForm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String username;
     private String gmail;
     private String phone;
 
@@ -20,6 +21,14 @@ public class JoinForm {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getGmail() {
@@ -37,12 +46,13 @@ public class JoinForm {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-public JoinForm()
-{
 
-}
-    public JoinForm(String name, String gmail, String phone) {
+    public JoinForm() {
+    }
+
+    public JoinForm(String name, String username, String gmail, String phone) {
         this.name = name;
+        this.username = username;
         this.gmail = gmail;
         this.phone = phone;
     }
