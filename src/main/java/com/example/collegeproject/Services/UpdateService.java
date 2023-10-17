@@ -1,14 +1,11 @@
 package com.example.collegeproject.services;
 
-import com.example.collegeproject.dto.JoinRequest;
 import com.example.collegeproject.dto.UpdateRequest;
-import com.example.collegeproject.dto.responcedto.RegistrationResponse;
+import com.example.collegeproject.dto.responseDto.RegistrationResponse;
 import com.example.collegeproject.entity.JoinForm;
 import com.example.collegeproject.repo.JoinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.security.PrivateKey;
 
 @Service
 public class UpdateService {
@@ -29,7 +26,7 @@ public class UpdateService {
        registrationResponse.setMessage(" details updated successfully ");
    }
    else {
-       registrationResponse.setUserId(updateRequest.getid());
+     registrationResponse.setUserId(updateRequest.getid());
        registrationResponse.setMessage("this username is not present");
    }
    return registrationResponse;

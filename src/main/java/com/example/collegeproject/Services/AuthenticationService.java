@@ -1,7 +1,7 @@
 package com.example.collegeproject.services;
 
 import com.example.collegeproject.dto.AuthenticationRequest;
-import com.example.collegeproject.dto.responcedto.RegistrationResponse;
+import com.example.collegeproject.dto.responseDto.RegistrationResponse;
 import com.example.collegeproject.entity.User;
 import com.example.collegeproject.repo.UserRepository;
 //import com.example.collegeproject.repositories.UserRepository;

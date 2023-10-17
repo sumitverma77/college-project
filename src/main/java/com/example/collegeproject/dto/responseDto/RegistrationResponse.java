@@ -1,4 +1,4 @@
-package com.example.collegeproject.dto.responcedto;
+package com.example.collegeproject.dto.responseDto;
 
 public class RegistrationResponse {
     private Long userId;
