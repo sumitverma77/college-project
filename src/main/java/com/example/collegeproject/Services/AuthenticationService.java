@@ -1,12 +1,11 @@
 package com.example.collegeproject.services;
 
 import com.example.collegeproject.dto.AuthenticationRequest;
-import com.example.collegeproject.dto.JoinForm;
-import com.example.collegeproject.dto.User;
+import com.example.collegeproject.dto.responcedto.RegistrationResponse;
+import com.example.collegeproject.entity.User;
 import com.example.collegeproject.repo.UserRepository;
 //import com.example.collegeproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,26 +15,36 @@ public class AuthenticationService {
     private UserRepository userRepository;
 
 
-    public boolean registerUser(AuthenticationRequest request) {
-        User existingUser = userRepository.findByUsername(request.getUsername());
-        if (existingUser != null) {
-            return false; // Username already exists
-        } else {
-            User newUser = new User();
-            newUser.setUsername(request.getUsername());
-            newUser.setPassword(request.getPassword());
-            userRepository.save(newUser);
-            return true; // Registration successful
-        }
-    }
+        public RegistrationResponse registerUser(AuthenticationRequest request) {
+          User existingUser = userRepository.findByUsername(request.getUsername());
+            RegistrationResponse response = new RegistrationResponse();
+            if (existingUser != null) {
+                response.setUserId(null);
+                response.setMessage("user name not available");
+            }
+            else {
+                User newUser = new User();
+                newUser.setUsername(request.getUsername());
+                newUser.setPassword(request.getPassword());
+                newUser=  userRepository.save(newUser);
+                response.setUserId(newUser.getId());
+                response.setMessage("Registration Successfull");
+            }
+            return response;
+       }
 
-    public boolean signinUser(AuthenticationRequest request) {
+    public RegistrationResponse signinUser(AuthenticationRequest request) {
         User existingUser = userRepository.findByUsername(request.getUsername());
+        RegistrationResponse registrationResponse= new RegistrationResponse();
         if (existingUser != null && existingUser.getPassword().equals(request.getPassword())) {
-            return true;
+
+            registrationResponse.setUserId(existingUser.getId());
+            registrationResponse.setMessage("signin  succesfull");
         } else {
-            return false;
+            registrationResponse.setUserId(null);
+            registrationResponse.setMessage("wrong username or password ");
         }
+        return registrationResponse;
     }
 }
 

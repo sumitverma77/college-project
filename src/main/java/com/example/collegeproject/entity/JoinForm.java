@@ -1,4 +1,4 @@
-package com.example.collegeproject.dto;
+package com.example.collegeproject.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,10 +8,10 @@ import jakarta.persistence.Id;
 @Entity
 public class JoinForm {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String username;
+//    private String username;
     private String gmail;
     private String phone;
 
@@ -22,14 +22,21 @@ public class JoinForm {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getUsername() {
-        return username;
+    public  long getid()
+    {
+        return id;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public  void setid(long id)
+    {
+        this.id=id;
     }
+//    public String getUsername() {
+//        return username;
+//    }
+
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public String getGmail() {
         return gmail;
@@ -50,9 +57,10 @@ public class JoinForm {
     public JoinForm() {
     }
 
-    public JoinForm(String name, String username, String gmail, String phone) {
+    public JoinForm(long id , String name, String gmail, String phone) {
+         this.id=id;
         this.name = name;
-        this.username = username;
+//        this.username = username;
         this.gmail = gmail;
         this.phone = phone;
     }
