@@ -1,7 +1,7 @@
 package com.example.collegeproject.services;
 
 import com.example.collegeproject.dto.JoinRequest;
-import com.example.collegeproject.dto.responcedto.RegistrationResponse;
+import com.example.collegeproject.dto.responseDto.RegistrationResponse;
 import com.example.collegeproject.entity.JoinForm;
 import com.example.collegeproject.repo.JoinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
