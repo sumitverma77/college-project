@@ -1,9 +1,11 @@
 package com.example.collegeproject.dto;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 public class AuthenticationRequest {
-
-        private String username;
-        private String password;
+    private String username;
+        private String      password;
 
         // Constructors, getters, and setters
 

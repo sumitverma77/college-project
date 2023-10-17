@@ -1,7 +1,7 @@
 
 //package com.example.collegeproject.services;
 //
-//import com.example.collegeproject.dto.User;
+//import com.example.collegeproject.entity.User;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
 //
