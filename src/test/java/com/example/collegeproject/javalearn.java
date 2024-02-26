@@ -55,6 +55,7 @@ public class javalearn {
                       prime[j-start]=true;
                   }
                 }
+                //hi
             }
         }
         for(int i=0;i<prime.length;i++)
