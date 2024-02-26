@@ -7,6 +7,7 @@ public class AuthenticationRequest {
         private String      password;
 
         // Constructors, getters, and setters
+    //is everything  fine?????
 
     public String getUsername() {
         return username;
