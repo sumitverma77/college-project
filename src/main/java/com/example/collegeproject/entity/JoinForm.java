@@ -30,6 +30,7 @@ public class JoinForm {
     {
         this.id=id;
     }
+
 //    public String getUsername() {
 //        return username;
 //    }

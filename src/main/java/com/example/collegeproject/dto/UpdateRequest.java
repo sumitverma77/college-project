@@ -1,5 +1,6 @@
 package com.example.collegeproject.dto;
 
+
 public class UpdateRequest {
     long id;
     String name;

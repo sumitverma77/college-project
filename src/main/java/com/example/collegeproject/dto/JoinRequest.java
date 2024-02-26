@@ -1,5 +1,7 @@
 package com.example.collegeproject.dto;
 
+import org.springframework.stereotype.Component;
+
 public class JoinRequest {
     private long id;
     private String name;
@@ -13,6 +15,10 @@ public class JoinRequest {
         this.gmail = gmail;
         this.phone = phone;
     }
+ public  String name()
+ {
+     return "sumit";
+ }
 
     public String getName() {
         return name;
