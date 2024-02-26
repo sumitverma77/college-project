@@ -12,8 +12,9 @@ import com.example.collegeproject.services.JoinService;
 import com.example.collegeproject.services.UpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
+//@Component
 @RestController
 @RequestMapping("/authentication")
 @CrossOrigin(origins = "*")
